@@ -1,0 +1,5 @@
+@import 'src/common';
+
+#common-info-container {
+	@include container();
+}

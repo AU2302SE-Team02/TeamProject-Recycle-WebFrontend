@@ -1,0 +1,5 @@
+@import 'src/common';
+
+#search-result-container {
+	@include container();
+}

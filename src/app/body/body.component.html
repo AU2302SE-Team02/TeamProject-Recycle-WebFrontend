@@ -1,0 +1,27 @@
+<div id="body-container">
+	<mat-form-field id="input-name" appearance="outline">
+		<mat-label>바코드 번호</mat-label>
+		<input matInput [formControl]="searchId" placeholder="13자리 바코드 번호" maxlength="13" />
+		<mat-error>13자리 숫자를 입력해주세요.</mat-error>
+	</mat-form-field>
+
+	<div id="function-buttons">
+		<div style="display: flex;">
+			<button mat-stroked-button class="button mat-elevation-z2"
+				(click)="onClickSearchButton()"
+				[disabled]="searchId.invalid">검색</button>
+			<button mat-stroked-button class="button mat-elevation-z2">최근 내역</button>
+		</div>
+		<div style="display: flex; margin-top: 12px;">
+			<button mat-stroked-button class="button mat-elevation-z2">카메라</button>
+			<button mat-stroked-button class="button mat-elevation-z2">갤러리</button>
+		</div>
+	</div>
+
+	<div id="misc-buttons">
+		<button mat-stroked-button class="button mat-elevation-z2"
+			(click)="onClickCommonInfoButton()">기본 상식</button>
+		<button mat-stroked-button class="button mat-elevation-z2"
+			(click)="onClickFeedbackButton()">피드백</button>
+	</div>
+</div>
