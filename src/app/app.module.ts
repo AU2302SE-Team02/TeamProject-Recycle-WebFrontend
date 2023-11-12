@@ -11,23 +11,30 @@ import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
 
 /* Component modules */
+
+/* Header */
 import { HeaderComponent } from './header/header.component';
 
+/* Body */
 import { BodyComponent } from './body/body.component';
-
 import { CommonInfoComponent } from './common-info/common-info.component';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { RecentResultComponent } from './recent-result/recent-result.component';
 
 /** 앱 모듈 */
 @NgModule({
 	declarations: [
+		/* App */
 		AppComponent,
 
+		/* Header */
 		HeaderComponent,
 
+		/* Body */
 		BodyComponent,
 		CommonInfoComponent,
 		SearchResultComponent,
+		RecentResultComponent,
 	],
 	imports: [
 		BrowserModule,

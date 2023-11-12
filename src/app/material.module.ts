@@ -6,7 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
 
 /** 머터리얼 통합 모듈 */
@@ -16,7 +16,7 @@ import { MatDividerModule } from '@angular/material/divider';
 		MatButtonModule,
 		MatFormFieldModule,
 		MatInputModule,
-
+		MatGridListModule,
 		MatDividerModule,
 	],
 })

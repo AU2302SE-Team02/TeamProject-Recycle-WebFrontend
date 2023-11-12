@@ -1,5 +1,16 @@
+/* Common modules */
 @import 'src/common';
 
 #common-info-container {
 	@include container();
+}
+
+#common-info-title {
+	margin-bottom: 10px;
+	text-align: center;
+	font-size: 18px;
+}
+
+#common-info-content {
+	margin-bottom: 10px;
 }

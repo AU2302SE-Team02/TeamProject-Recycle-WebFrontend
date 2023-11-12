@@ -10,11 +10,14 @@
 			<button mat-stroked-button class="button mat-elevation-z2"
 				(click)="onClickSearchButton()"
 				[disabled]="searchId.invalid">검색</button>
-			<button mat-stroked-button class="button mat-elevation-z2">최근 내역</button>
+			<button mat-stroked-button class="button mat-elevation-z2"
+				(click)="onClickRecentResultButton()">최근 내역</button>
 		</div>
 		<div style="display: flex; margin-top: 12px;">
-			<button mat-stroked-button class="button mat-elevation-z2">카메라</button>
-			<button mat-stroked-button class="button mat-elevation-z2">갤러리</button>
+			<button mat-stroked-button class="button mat-elevation-z2"
+				(click)="onClickCameraButton()">카메라</button>
+			<button mat-stroked-button class="button mat-elevation-z2"
+				(click)="onClickGalleryButton()">갤러리</button>
 		</div>
 	</div>
 

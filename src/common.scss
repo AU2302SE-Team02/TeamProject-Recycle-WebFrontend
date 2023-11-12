@@ -1,3 +1,7 @@
+/* 본문 너비 */
+$body-width: 500px;
+
+/* 컨테이너 div 가운데 정렬 스타일 함수 */
 @mixin container() {
 	display: flex;
 	flex-direction: column;

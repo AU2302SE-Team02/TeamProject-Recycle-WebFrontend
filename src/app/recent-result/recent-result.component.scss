@@ -1,0 +1,48 @@
+/* Common modules */
+@import 'src/common';
+
+#recent-result-container {
+	@include container();
+}
+
+#recent-result-title {
+	margin-bottom: 10px;
+	text-align: center;
+	font-size: 18px;
+}
+
+#no-recent-result {
+	margin-bottom: 10px;
+	font-size: 16px;
+}
+
+.item-card {
+	display: flex;
+	width: $body-width;
+	height: 100px;
+	margin-bottom: 16px;
+}
+
+.item-image {
+	margin: 5px;
+	width: 90px;
+	height: 90px;
+}
+
+.item-text-infoes {
+	padding: 10px;
+	width: calc($body-width - 100px);
+}
+
+.item-name {
+	font-size: 16px;
+}
+
+.item-id {
+	font-size: 12px;
+}
+
+.button-item-search-again {
+	float: right;
+	margin-top: 3px;
+}
