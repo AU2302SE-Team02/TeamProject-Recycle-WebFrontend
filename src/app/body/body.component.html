@@ -1,30 +1,51 @@
 <div id="body-container">
-	<mat-form-field id="input-name" appearance="outline">
-		<mat-label>바코드 번호</mat-label>
-		<input matInput [formControl]="searchId" placeholder="13자리 바코드 번호" maxlength="13" />
-		<mat-error>13자리 숫자를 입력해주세요.</mat-error>
-	</mat-form-field>
+  <!--<div id="title"><mat-icon id="title-icon">recycling</mat-icon></div>-->
+  <img src="assets/recycle3D.png" />
 
-	<div id="function-buttons">
-		<div style="display: flex;">
-			<button mat-stroked-button class="button mat-elevation-z2"
-				(click)="onClickSearchButton()"
-				[disabled]="searchId.invalid">검색</button>
-			<button mat-stroked-button class="button mat-elevation-z2"
-				(click)="onClickRecentResultButton()">최근 내역</button>
-		</div>
-		<div style="display: flex; margin-top: 12px;">
-			<button mat-stroked-button class="button mat-elevation-z2"
-				(click)="onClickCameraButton()">카메라</button>
-			<button mat-stroked-button class="button mat-elevation-z2"
-				(click)="onClickGalleryButton()">갤러리</button>
-		</div>
-	</div>
+  <div id="barcode-container">
+    <mat-form-field id="input-name" appearance="outline">
+      <button mat-icon-button (click)="onClickGalleryButton()" matPrefix>
+        <mat-icon>collections</mat-icon>
+      </button>
+      <button mat-icon-button (click)="onClickCameraButton()" matPrefix>
+        <mat-icon>local_see</mat-icon>
+      </button>
 
-	<div id="misc-buttons">
-		<button mat-stroked-button class="button mat-elevation-z2"
-			(click)="onClickCommonInfoButton()">기본 상식</button>
-		<button mat-stroked-button class="button mat-elevation-z2"
-			(click)="onClickFeedbackButton()">피드백</button>
-	</div>
+      <mat-label>바코드 번호</mat-label>
+      <input
+        matInput
+        [formControl]="searchId"
+        placeholder="13자리 바코드 번호"
+        maxlength="13"
+        id="barcode-input"
+      />
+      <mat-error>13자리 숫자를 입력해주세요.</mat-error>
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="onClickSearchButton()"
+        [disabled]="searchId.invalid"
+      >
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+
+  <!-- 버튼 컨테이너 -->
+  <div class="button-container">
+    <!-- 첫 번째 버튼 -->
+    <button class="button" (click)="onClickRecentResultButton()">
+      <img src="assets/reminder.png" alt="Image 1" />
+      <span>최근 내역</span>
+    </button>
+    <button class="button" (click)="onClickCommonInfoButton()">
+      <img src="assets/book.png" alt="Image 2" />
+      <span>기본 상식</span>
+    </button>
+
+    <button class="button" (click)="onClickFeedbackButton()">
+      <img src="assets/feedback.png" alt="Image 3" />
+      <span>피드백</span>
+    </button>
+  </div>
 </div>

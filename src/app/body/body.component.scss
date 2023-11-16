@@ -1,19 +1,91 @@
-@import 'src/common';
+@import "src/common";
 
 #body-container {
-	@include container();
+  @include container();
 }
 
 #misc-buttons {
-	display: flex;
-	margin-top: 30px;
+  display: flex;
+  margin-top: 30px;
 }
 
+#barcode-container {
+  margin-top: 15%;
+}
+#input-name {
+  width: 100%;
+}
+
+#barcode-input {
+  min-width: 104px !important;
+}
+
+#title {
+  display: flex;
+  font-size: 30px;
+  align-items: center;
+  margin: 30px;
+}
+
+#title-icon {
+  width: 100%;
+  height: 100%;
+  font-size: 100px;
+  color: #61d23d;
+}
+
+#feature-container {
+  display: flex;
+  width: 90%;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+/* 가로로 나열되는 버튼과 수직으로 나열되는 이미지 및 이름을 감싸는 컨테이너 */
+.button-container {
+  display: flex; /* 가로로 나열 */
+  justify-content: center; /* 중앙 정렬 */
+  margin-top: 20px;
+}
+
+/* 버튼 스타일링 */
 .button {
-	width: 100px;
-	margin-right: 12px;
+  display: flex; /* 수직 정렬을 위해 flex 사용 */
+  flex-direction: column; /* 수직 방향으로 정렬 */
+  align-items: center; /* 중앙 정렬 */
+  width: 25%; /* 버튼 너비 */
+  height: 120px; /* 버튼 높이 */
+  margin: 0 10px; /* 간격 조절 */
+  border: none;
+  border-radius: 5px; /* 둥글게 모양 지정 */
+  background-color: #ffffff; /* 배경색 */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease; /* 부드러운 전환 효과 */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
 }
 
-.button:last-child {
-	margin-right: 0px;
+/* 이미지 스타일링 */
+.button img {
+  width: 100px; /* 이미지 너비 */
+  height: 100px; /* 이미지 높이 */
+  margin-bottom: 0px; /* 이미지와 이름 간격 조절 */
+}
+
+/* 그림 이름 스타일링 */
+.button span {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 12px; /* 폰트 크기 */
+  font-weight: bold; /* 폰트 굵기 */
+  color: #333; /* 글자색 */
+}
+
+/* 눌렀을 때 스타일링 */
+.button:active {
+  background-color: #61d23d; /* 누를 때 배경색 변화 */
+  transform: translateY(2px); /* 클릭시 버튼이 아래로 약간 이동하도록 */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* 클릭시 그림자 효과 강화 */
 }

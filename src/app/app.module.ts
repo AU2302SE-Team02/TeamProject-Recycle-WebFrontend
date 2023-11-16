@@ -23,28 +23,28 @@ import { RecentResultComponent } from './recent-result/recent-result.component';
 
 /** 앱 모듈 */
 @NgModule({
-	declarations: [
-		/* App */
-		AppComponent,
+  declarations: [
+    /* App */
+    AppComponent,
 
-		/* Header */
-		HeaderComponent,
+    /* Header */
+    HeaderComponent,
 
-		/* Body */
-		BodyComponent,
-		CommonInfoComponent,
-		SearchResultComponent,
-		RecentResultComponent,
-	],
-	imports: [
-		BrowserModule,
-		BrowserAnimationsModule,
-		FormsModule,
-		ReactiveFormsModule,
-		AppRoutingModule,
-		MaterialModule,
-	],
-	providers: [],
-	bootstrap: [AppComponent]
+    /* Body */
+    BodyComponent,
+    CommonInfoComponent,
+    SearchResultComponent,
+    RecentResultComponent,
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    MaterialModule,
+  ],
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

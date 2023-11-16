@@ -8,16 +8,18 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
 
 /** 머터리얼 통합 모듈 */
 @NgModule({
-	exports: [
-		MatToolbarModule,
-		MatButtonModule,
-		MatFormFieldModule,
-		MatInputModule,
-		MatGridListModule,
-		MatDividerModule,
-	],
+  exports: [
+    MatToolbarModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatGridListModule,
+    MatDividerModule,
+    MatIconModule,
+  ],
 })
-export class MaterialModule { }
+export class MaterialModule {}
