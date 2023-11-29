@@ -20,6 +20,7 @@ import { BodyComponent } from './body/body.component';
 import { CommonInfoComponent } from './common-info/common-info.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { RecentResultComponent } from './recent-result/recent-result.component';
+import { HttpClientModule } from '@angular/common/http';
 
 /** 앱 모듈 */
 @NgModule({
@@ -43,6 +44,7 @@ import { RecentResultComponent } from './recent-result/recent-result.component';
     ReactiveFormsModule,
     AppRoutingModule,
     MaterialModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

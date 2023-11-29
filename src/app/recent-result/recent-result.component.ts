@@ -62,7 +62,7 @@ export class RecentResultComponent {
     this._router.navigate(['']);
   }
 
-  generateBarcode(barcodeValue: string) {
+  public generateBarcode(barcodeValue: string) {
     JsBarcode(`#i${barcodeValue}`, barcodeValue, {
       format: 'CODE128',
       lineColor: '#000',

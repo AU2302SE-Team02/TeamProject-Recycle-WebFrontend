@@ -1,0 +1,20 @@
+{
+  "/getInfo": {
+    "target": "http://www.koreannet.or.kr",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/getInfo": ""
+    }
+  },
+  "/images": {
+    "target": "http://www.koreannet.or.kr",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/images": ""
+    }
+  }
+}

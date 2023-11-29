@@ -1,29 +1,15 @@
 <div *ngIf="itemInfoTable !== undefined" id="search-result-container">
-  <img class="item-image mat-elevation-z2" [src]="itemInfoTable.imageLink" />
-  <div class="item-info" style="font-size: 20px; font-weight: 600">
-    <div class="item-infos-container">{{ itemInfoTable.name }}</div>
-    <mat-chip-listbox class="item-infos-container">
-      <mat-chip *ngFor="let partType of itemInfoTable.parts">
-        {{ partType.type }}</mat-chip
-      >
-    </mat-chip-listbox>
-    <svg
-      class="item-infos-container"
-      class="barcode-container"
-      id="i{{ itemInfoTable.id }}"
-      #barcode
-    ></svg>
-  </div>
-  <mat-card *ngFor="let partType of itemInfoTable.parts">
-    <mat-card-header> </mat-card-header>
-    <mat-card-content> </mat-card-content>
-  </mat-card>
   <mat-card class="card">
     <mat-card-content>
       <img
-        class="item-image mat-elevation-z2"
+        id="item-image"
+        class="mat-elevation-z2"
         [src]="itemInfoTable.imageLink"
       />
+      <div class="barcode-container">
+        <svg id="barcode" #barcode></svg>
+      </div>
+
       <div class="item-info" style="font-size: 20px; font-weight: 600">
         <div class="item-infos-container">{{ itemInfoTable.name }}</div>
         <mat-chip-listbox class="item-infos-container">
@@ -31,29 +17,25 @@
             {{ partType.type }}</mat-chip
           >
         </mat-chip-listbox>
-        <svg
-          class="item-infos-container"
-          class="barcode-container"
-          id="i{{ itemInfoTable.id }}"
-          #barcode
-        ></svg>
       </div>
     </mat-card-content>
   </mat-card>
-  <!-- 물건 이름 -->
+
+  <!--
+  물건 이름
   <div id="item-name">{{ itemInfoTable.name }}</div>
 
-  <!-- 물건 이미지 -->
+  물건 이미지
   <img
     id="item-image"
     class="mat-elevation-z2"
     [src]="itemInfoTable.imageLink"
   />
 
-  <!-- 물건 바코드 번호 -->
+  물건 바코드 번호
   <div id="item-id">바코드 번호: {{ itemInfoTable.id }}</div>
 
-  <!-- 물건 분리배출 방법 표 -->
+  물건 분리배출 방법 표
   <table id="item-info-table" class="mat-elevation-z2" border="1">
     <th class="table-title">재질</th>
     <th class="table-title">설명</th>
@@ -63,7 +45,7 @@
       </td>
       <td>{{ part.description }}</td>
     </tr>
-  </table>
+  </table>-->
 
   <!-- 버튼: 뒤로 가기 -->
   <button
