@@ -16,6 +16,12 @@
   font-size: 16px;
 }
 
+.card {
+  display: flex;
+  width: 90%;
+  margin-bottom: 16px;
+}
+
 .item-card {
   display: flex;
   width: 90%;
@@ -23,15 +29,26 @@
   margin-bottom: 16px;
 }
 
+.item-container {
+  display: flex;
+  height: 170px;
+}
+
 .item-image {
   margin: 5px;
-  width: 90px;
-  height: 90px;
+  width: 90%;
 }
 
 .item-text-infoes {
   padding: 10px;
   width: calc($body-width - 100px);
+}
+
+.item-info {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 .item-name {
@@ -40,6 +57,15 @@
 
 .item-id {
   font-size: 12px;
+}
+
+.item-created-date {
+  font-size: 12px;
+}
+
+.barcode-container {
+  height: 50px;
+  width: 100%;
 }
 
 .button-item-search-again {

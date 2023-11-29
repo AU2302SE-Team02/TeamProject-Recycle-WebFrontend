@@ -9,6 +9,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
 
 /** 머터리얼 통합 모듈 */
 @NgModule({
@@ -20,6 +22,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatGridListModule,
     MatDividerModule,
     MatIconModule,
+    MatCardModule,
+    MatChipsModule,
   ],
 })
 export class MaterialModule {}
