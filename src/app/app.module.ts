@@ -21,6 +21,7 @@ import { CommonInfoComponent } from './common-info/common-info.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { RecentResultComponent } from './recent-result/recent-result.component';
 import { HttpClientModule } from '@angular/common/http';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 /** 앱 모듈 */
 @NgModule({
@@ -45,6 +46,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     MaterialModule,
     HttpClientModule,
+    GoogleMapsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

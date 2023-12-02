@@ -2,12 +2,12 @@
 
 #body-container {
   @include container();
-  margin-top: 20%;
+  margin-top: 10%;
 }
 
 #misc-buttons {
   display: flex;
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
 #barcode-container {
@@ -23,9 +23,10 @@
 
 #title {
   display: flex;
-  font-size: 30px;
   align-items: center;
-  margin: 30px;
+  margin-left: 5%;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 #title-icon {
@@ -89,4 +90,10 @@ input.example-right-align::-webkit-inner-spin-button {
   background-color: #61d23d; /* 누를 때 배경색 변화 */
   transform: translateY(2px); /* 클릭시 버튼이 아래로 약간 이동하도록 */
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* 클릭시 그림자 효과 강화 */
+}
+
+#location {
+  margin-top: 20px;
+  height: 250px;
+  width: 80%;
 }

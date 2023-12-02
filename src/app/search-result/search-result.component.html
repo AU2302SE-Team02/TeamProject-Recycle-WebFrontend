@@ -9,14 +9,34 @@
       <div class="barcode-container">
         <svg id="barcode" #barcode></svg>
       </div>
+      <div class="item-info">
+        {{ itemInfoTable.name }}
+        <div id="part-infos-summary">
+          분리배출
 
-      <div class="item-info" style="font-size: 20px; font-weight: 600">
-        <div class="item-infos-container">{{ itemInfoTable.name }}</div>
-        <mat-chip-listbox class="item-infos-container">
-          <mat-chip *ngFor="let partType of itemInfoTable.parts">
-            {{ partType.type }}</mat-chip
+          <mat-chip-listbox class="part-infos-container" *ngIf="!isDetailed">
+            <mat-chip *ngFor="let partType of itemInfoTable.parts">
+              {{ partType.type }}</mat-chip
+            >
+          </mat-chip-listbox>
+          <button mat-icon-button (click)="onClickDetailedButton()">
+            <mat-icon *ngIf="!isDetailed">expand_more</mat-icon>
+            <mat-icon *ngIf="isDetailed">expand_less</mat-icon>
+          </button>
+        </div>
+        <div *ngIf="isDetailed">
+          <mat-card
+            *ngFor="let part of itemInfoTable.parts"
+            class="part-info-card"
           >
-        </mat-chip-listbox>
+            <mat-card-content>
+              <div class="part-info">
+                <mat-chip> {{ part.type }}</mat-chip>
+                <div class="part-description">{{ part.description }}</div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
       </div>
     </mat-card-content>
   </mat-card>

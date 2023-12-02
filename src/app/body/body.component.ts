@@ -16,13 +16,16 @@ class AndroidClientApp {
   public onClickEmailButton(): void {
     console.log('onClickEmailButton()');
   }
-  public onClickLocationButton(isClicked: boolean): void {}
+  public onClickLocationButton(isClicked: boolean): void {
+    console.log('onClickLocationButton()');
+  }
 }
 
 declare global {
   interface Window {
     AndroidClientApp: AndroidClientApp;
     setBarcode: (barcode: string) => void;
+    setLocation: (location: string) => void;
   }
 }
 
@@ -40,6 +43,7 @@ export class BodyComponent {
     Validators.maxLength(13),
     Validators.pattern('[0-9]*'),
   ]);
+  public location = '경기도-수원시-영통구-원천동';
 
   /** 생성자
    * @param _router 라우터 (읽기 전용)
@@ -48,18 +52,26 @@ export class BodyComponent {
     //window.AndroidClientApp = new AndroidClientApp(); // 생성 안 하면 undefined 에러가 뜨지만 생성하면 안드로이드에서 인식 못함
     window.setBarcode = (barcode: string): void =>
       this.searchId.setValue(barcode);
+    window.setLocation = (location: string): void => this.setLocation(location);
+    /** 실행될때 위치 받아옴 */
+    //window.AndroidClientApp.onClickLocationButton(false);
   }
 
   /** 검색 버튼을 누를 경우 호출되는 메서드 */
   public onClickSearchButton(): void {
     /* 입력된 바코드 번호를 첨부하여 검색 결과 페이지로 이동 */
-    this._router.navigate(['/search-result', this.searchId.value, '0']);
+    this._router.navigate([
+      '/search-result',
+      this.location,
+      this.searchId.value,
+      '0',
+    ]);
   }
 
   /** 최근 결과 버튼을 누를 경우 호출되는 메서드 */
   public onClickRecentResultButton(): void {
     /* 최근 결과 페이지로 이동 */
-    this._router.navigate(['/recent-result']);
+    this._router.navigate(['/recent-result', this.location]);
   }
 
   /** 카메라 버튼을 누를 경우 호출되는 메서드 */
@@ -84,5 +96,23 @@ export class BodyComponent {
   public onClickFeedbackButton(): void {
     // 개발자 이메일 Intent 요청 API 호출...
     window.AndroidClientApp.onClickFeedbackButton();
+  }
+
+  public onClickLocationButton(): void {
+    // 위치 정보 Intent 요청 API 호출...
+    window.AndroidClientApp.onClickLocationButton(true);
+  }
+
+  public setLocation(location: string) {
+    this.location = location;
+  }
+
+  public getLocationSummary(): string {
+    let locationSummary = '';
+    const locationArray = this.location.split('-');
+    for (let i = 2; i < locationArray.length; ++i) {
+      locationSummary += locationArray[i] + ' ';
+    }
+    return locationSummary;
   }
 }

@@ -1,5 +1,10 @@
+<div id="title">
+  {{ getLocationSummary() }}
+  <button mat-icon-button (click)="onClickLocationButton()">
+    <mat-icon>refresh</mat-icon>
+  </button>
+</div>
 <div id="body-container">
-  <!--<div id="title"><mat-icon id="title-icon">recycling</mat-icon></div>-->
   <img src="assets/recycle3D.png" />
 
   <div id="barcode-container">

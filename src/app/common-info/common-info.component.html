@@ -1,12 +1,19 @@
 <div id="common-info-container">
-	<!-- 제목 -->
-	<div id="common-info-title">분리배출 기본 상식</div>
-	<!-- 내용 -->
-	<div id="common-info-content">{{commonInfo}}</div>
-
-	<!-- 버튼: 뒤로 가기 -->
-	<button mat-stroked-button id="button-back" class="mat-elevation-z2"
-		(click)="onClickBackButton()">
-		뒤로 가기
-	</button>
+  <mat-card class="card" *ngFor="let info of commonInfos">
+    <mat-card-content>
+      <div id="common-info-content">
+        <img src="/assets/book.png" />
+        <p id="common-info-title">분리배출 기본 상식</p>
+        <p id="common-info">{{ info }}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <button
+    mat-stroked-button
+    id="button-back"
+    class="mat-elevation-z2"
+    (click)="onClickBackButton()"
+  >
+    뒤로 가기
+  </button>
 </div>

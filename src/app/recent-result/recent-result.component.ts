@@ -6,7 +6,7 @@ import {
   ViewChild,
   ViewChildren,
 } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import JsBarcode from 'jsbarcode';
 /* Dependent modules */
 import { ItemInfoTable } from '../common/common';
@@ -18,12 +18,20 @@ import { ItemInfoTable } from '../common/common';
   styleUrls: ['./recent-result.component.scss'],
 })
 export class RecentResultComponent {
+  /** 현재 위치 */
+  public readonly location: string = '';
+  /** 최근 검색 결과 */
   public readonly recentResultList: ItemInfoTable[] = [];
   /** 생성자
    * @param _router 라우터 (읽기 전용)
    */
   @ViewChildren('barcode') barcodeElements: QueryList<ElementRef> | undefined;
-  constructor(private readonly _router: Router) {
+  constructor(
+    private readonly _router: Router,
+    private readonly _route: ActivatedRoute
+  ) {
+    /* 라우터 매개변수 가져오기 */
+    this.location = this._route.snapshot.paramMap.get('location')!;
     this._getItemPromise = Promise.resolve();
   }
 

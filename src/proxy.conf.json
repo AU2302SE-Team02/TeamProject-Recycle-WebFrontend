@@ -16,5 +16,11 @@
     "pathRewrite": {
       "^/images": ""
     }
+  },
+  "/api": {
+    "target": "http://ec2-54-180-122-139.ap-northeast-2.compute.amazonaws.com:8080",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
   }
 }
