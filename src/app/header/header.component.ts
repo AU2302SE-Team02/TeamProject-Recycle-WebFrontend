@@ -13,6 +13,15 @@ export class HeaderComponent {
   /** 뒤로 가기 버튼을 누를 경우 호출되는 메서드 */
   public onClickBackButton(): void {
     /* 메인 페이지로 이동 */
-    this._router.navigate(['']);
+    let urlSplits = this._router.routerState.snapshot.url.split('/');
+    if (urlSplits[1] === 'search-result') {
+      if (urlSplits[4] === '1') {
+        this._router.navigate(['recent-result', urlSplits[2]]);
+      } else {
+        this._router.navigate(['']);
+      }
+    } else {
+      this._router.navigate(['']);
+    }
   }
 }

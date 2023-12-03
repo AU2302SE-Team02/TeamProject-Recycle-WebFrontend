@@ -61,7 +61,7 @@ export class RecentResultComponent {
   /** 다시 검색 버튼을 누를 경우 호출되는 메서드 */
   public onClickSearchAgainButton(itemId: string): void {
     /* 검색 결과 페이지로 이동 */
-    this._router.navigate(['/search-result', itemId, '1']);
+    this._router.navigate(['/search-result', this.location, itemId, '1']);
   }
 
   /** 뒤로 가기 버튼을 누를 경우 호출되는 메서드 */
