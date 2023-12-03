@@ -64,12 +64,6 @@ export class RecentResultComponent {
     this._router.navigate(['/search-result', this.location, itemId, '1']);
   }
 
-  /** 뒤로 가기 버튼을 누를 경우 호출되는 메서드 */
-  public onClickBackButton(): void {
-    /* 메인 페이지로 이동 */
-    this._router.navigate(['']);
-  }
-
   public generateBarcode(barcodeValue: string) {
     JsBarcode(`#i${barcodeValue}`, barcodeValue, {
       format: 'CODE128',
@@ -81,7 +75,7 @@ export class RecentResultComponent {
     //JsBarcode(element.nativeElement, barcodeValue);
   }
 
-  generateAllBarcodes() {
+  public generateAllBarcodes() {
     this.barcodeElements!.toArray().forEach((element, index) => {
       this.generateBarcode(this.recentResultList[index].id);
     });

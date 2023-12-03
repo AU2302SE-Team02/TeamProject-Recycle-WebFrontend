@@ -19,10 +19,4 @@ export class CommonInfoComponent {
    * @param _router 라우터 (읽기 전용)
    */
   constructor(private readonly _router: Router) {}
-
-  /** 뒤로 가기 버튼을 누를 경우 호출되는 메서드 */
-  public onClickBackButton(): void {
-    /* 메인 페이지로 이동 */
-    this._router.navigate(['']);
-  }
 }

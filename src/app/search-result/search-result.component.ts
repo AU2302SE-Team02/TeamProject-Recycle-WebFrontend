@@ -131,7 +131,7 @@ export class SearchResultComponent {
       });
   }
 
-  public generateBarcode(barcodeValue: string) {
+  public generateBarcode(barcodeValue: string): void {
     JsBarcode(`#barcode`, barcodeValue, {
       format: 'CODE128',
       lineColor: '#000',
@@ -144,11 +144,5 @@ export class SearchResultComponent {
   /** 재질 정보 자세히 토글 */
   public onClickDetailedButton(): void {
     this.isDetailed = !this.isDetailed;
-  }
-
-  /** 뒤로 가기 버튼을 누를 경우 호출되는 메서드 */
-  public onClickBackButton(): void {
-    /* 최근 검색 페이지로부터 왔다면 최근 검색 페이지로 돌아가고, 아닐 경우 메인 페이지로 이동 */
-    this._router.navigate([this.isFromRecentResult ? '/recent-result' : '']);
   }
 }

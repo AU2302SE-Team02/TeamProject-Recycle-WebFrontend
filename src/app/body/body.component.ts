@@ -43,7 +43,7 @@ export class BodyComponent {
     Validators.maxLength(13),
     Validators.pattern('[0-9]*'),
   ]);
-  public location = '경기도-수원시-영통구-원천동';
+  private _location = '경기도-수원시-영통구-원천동';
 
   /** 생성자
    * @param _router 라우터 (읽기 전용)
@@ -62,7 +62,7 @@ export class BodyComponent {
     /* 입력된 바코드 번호를 첨부하여 검색 결과 페이지로 이동 */
     this._router.navigate([
       '/search-result',
-      this.location,
+      this._location,
       this.searchId.value,
       '0',
     ]);
@@ -71,7 +71,7 @@ export class BodyComponent {
   /** 최근 결과 버튼을 누를 경우 호출되는 메서드 */
   public onClickRecentResultButton(): void {
     /* 최근 결과 페이지로 이동 */
-    this._router.navigate(['/recent-result', this.location]);
+    this._router.navigate(['/recent-result', this._location]);
   }
 
   /** 카메라 버튼을 누를 경우 호출되는 메서드 */
@@ -104,12 +104,12 @@ export class BodyComponent {
   }
 
   public setLocation(location: string) {
-    this.location = location;
+    this._location = location;
   }
 
-  public getLocationSummary(): string {
+  public getLocationName(): string {
     let locationSummary = '';
-    const locationArray = this.location.split('-');
+    const locationArray = this._location.split('-');
     for (let i = 2; i < locationArray.length; ++i) {
       locationSummary += locationArray[i] + ' ';
     }
