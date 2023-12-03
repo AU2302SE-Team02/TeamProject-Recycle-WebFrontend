@@ -116,7 +116,7 @@ export class SearchResultComponent {
 
   /** DB에서 믈건 나머지 정보 받아오기 */
   private getItemFromDB(): Promise<any> {
-    const url = `/api/db/${this.searchId}`;
+    const url = `/api/recycle/${this.searchId}?location=${this.location}`;
     return fetch(url)
       .then((response) => {
         if (response.ok) {
@@ -125,7 +125,20 @@ export class SearchResultComponent {
           throw new Error('서버 응답이 올바르지 않습니다.');
         }
       })
-      .then((data) => {})
+      .then((data) => {
+        if (data.itemParts !== null) {
+          console.log('재질(part) 업데이트');
+          this.itemInfoJson.itemParts = data.itemParts;
+        }
+        if (data.itemDateCreated !== null) {
+          console.log('문서 생성 날짜 업데이트');
+          this.itemInfoJson.itemDateCreated = data.itemDateCreated;
+        }
+        if (data.itemDateModified !== null) {
+          console.log('최근 검색 날짜 업데이트');
+          this.itemInfoJson.itemDateModified = data.guideDateUpdated;
+        }
+      })
       .catch((error) => {
         console.log(error);
       });

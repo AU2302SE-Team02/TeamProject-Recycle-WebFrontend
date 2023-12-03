@@ -8,7 +8,9 @@
         </div>
         <div class="item-info" style="width: 50%; font-weight: 600">
           <div class="item-name">{{ item.name }}</div>
-          <div class="item-created-date">2023-10-31(ex) 검색</div>
+          <div class="item-created-date">
+            {{ getReadableDate(item.dateModified) }} 검색
+          </div>
           <mat-chip-listbox>
             <mat-chip *ngFor="let partType of item.parts">
               {{ partType.type }}</mat-chip

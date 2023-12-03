@@ -17,7 +17,7 @@ class AndroidClientApp {
     console.log('onClickEmailButton()');
   }
   public onClickLocationButton(isClicked: boolean): void {
-    console.log('onClickLocationButton()');
+    console.log(`onClickLocationButton(${isClicked})`);
   }
 }
 
@@ -43,7 +43,7 @@ export class BodyComponent {
     Validators.maxLength(13),
     Validators.pattern('[0-9]*'),
   ]);
-  private _location = '경기도-수원시-영통구-원천동';
+  public location = '경기도-수원시-영통구-원천동';
 
   /** 생성자
    * @param _router 라우터 (읽기 전용)
@@ -52,9 +52,14 @@ export class BodyComponent {
     //window.AndroidClientApp = new AndroidClientApp(); // 생성 안 하면 undefined 에러가 뜨지만 생성하면 안드로이드에서 인식 못함
     window.setBarcode = (barcode: string): void =>
       this.searchId.setValue(barcode);
-    window.setLocation = (location: string): void => this.setLocation(location);
-    /** 실행될때 위치 받아옴 */
-    //window.AndroidClientApp.onClickLocationButton(false);
+    window.setLocation = (location: string): void => {
+      this.location = location;
+    };
+  }
+
+  public ngOnInit(): void {
+    /** 생성 후 위치 받아옴 */
+    window.AndroidClientApp.onClickLocationButton(false);
   }
 
   /** 검색 버튼을 누를 경우 호출되는 메서드 */
@@ -62,7 +67,7 @@ export class BodyComponent {
     /* 입력된 바코드 번호를 첨부하여 검색 결과 페이지로 이동 */
     this._router.navigate([
       '/search-result',
-      this._location,
+      this.location,
       this.searchId.value,
       '0',
     ]);
@@ -71,7 +76,7 @@ export class BodyComponent {
   /** 최근 결과 버튼을 누를 경우 호출되는 메서드 */
   public onClickRecentResultButton(): void {
     /* 최근 결과 페이지로 이동 */
-    this._router.navigate(['/recent-result', this._location]);
+    this._router.navigate(['/recent-result', this.location]);
   }
 
   /** 카메라 버튼을 누를 경우 호출되는 메서드 */
@@ -93,9 +98,9 @@ export class BodyComponent {
   }
 
   /** 피드백 버튼을 누를 경우 호출되는 메서드 */
-  public onClickFeedbackButton(): void {
+  public onClickEmailButton(): void {
     // 개발자 이메일 Intent 요청 API 호출...
-    window.AndroidClientApp.onClickFeedbackButton();
+    window.AndroidClientApp.onClickEmailButton();
   }
 
   public onClickLocationButton(): void {
@@ -104,13 +109,13 @@ export class BodyComponent {
   }
 
   public setLocation(location: string) {
-    this._location = location;
+    this.location = location;
   }
 
   public getLocationName(): string {
     let locationSummary = '';
-    const locationArray = this._location.split('-');
-    for (let i = 2; i < locationArray.length; ++i) {
+    const locationArray = this.location.split('-');
+    for (let i = locationArray.length - 2; i < locationArray.length; ++i) {
       locationSummary += locationArray[i] + ' ';
     }
     return locationSummary;

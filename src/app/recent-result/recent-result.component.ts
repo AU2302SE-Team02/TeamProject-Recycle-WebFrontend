@@ -81,5 +81,12 @@ export class RecentResultComponent {
     });
   }
 
+  public getReadableDate(date: string): string {
+    const dateObject = new Date(date);
+    return `${dateObject.getFullYear()}년 ${
+      dateObject.getMonth() + 1
+    }월 ${dateObject.getDate()}일`;
+  }
+
   private _getItemPromise: Promise<any>;
 }

@@ -25,6 +25,7 @@
           </button>
         </div>
         <div *ngIf="isDetailed">
+          <p>{{ location }}</p>
           <mat-card
             *ngFor="let part of itemInfoTable.parts"
             class="part-info-card"
