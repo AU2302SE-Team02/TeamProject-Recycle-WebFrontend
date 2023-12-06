@@ -39,6 +39,38 @@ export class RecentResultComponent {
   public ngOnInit(): void {}
 
   public ngAfterViewInit(): void {
+    if (window.AndroidClientApp !== undefined) {
+      this._getItemPromise = new Promise<any>((resolve, reject) => {
+        window.AndroidClientApp.onClickLoadLog() as unknown as string;
+      });
+      this._getItemPromise
+        .then((result) => {
+          if (result.ok) {
+            return result.json();
+          } else {
+            throw new Error('서버 응답이 올바르지 않습니다.');
+          }
+        })
+        .then((json) => {
+          for (let item of json) {
+            this.recentResultList.push(
+              new ItemInfoTable({
+                itemId: item.itemBarcode,
+                itemDocuId: item.itemBarcode,
+                itemName: item.itemName,
+                itemDateCreated: item.itemSearchDate,
+                itemDateModified: item.itemSearchDate,
+                itemImageLink: item.itemImageLink,
+                itemParts: { Unknown: 'unknown' },
+              })
+            );
+          }
+          setTimeout(() => {
+            this.generateAllBarcodes(), 0;
+          });
+        });
+    }
+    /**
     this._getItemPromise = fetch('assets/test-recent-result.json')
       .then((response) => {
         if (response.ok) {
@@ -48,14 +80,14 @@ export class RecentResultComponent {
         }
       })
       .then((json) => {
-        /* JSON 데이터를 이용해 정보 저장 */
+        /* JSON 데이터를 이용해 정보 저장 
         json.items.forEach((item: any) => {
           this.recentResultList.push(new ItemInfoTable(item));
         });
         setTimeout(() => {
           this.generateAllBarcodes(), 0;
         });
-      });
+      }); */
   }
 
   /** 다시 검색 버튼을 누를 경우 호출되는 메서드 */
@@ -72,7 +104,6 @@ export class RecentResultComponent {
       height: 30,
       displayValue: true,
     });
-    //JsBarcode(element.nativeElement, barcodeValue);
   }
 
   public generateAllBarcodes() {

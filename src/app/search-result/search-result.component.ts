@@ -57,6 +57,15 @@ export class SearchResultComponent {
     /* 검색 요청 API 호출 */
     this.getItemFromKN().then(() => {
       this.getItemFromDB().then(() => {
+        if (window.AndroidClientApp !== undefined) {
+          window.AndroidClientApp.onClickSaveLog(
+            this.itemInfoJson.name,
+            this.itemInfoJson.imageLink,
+            this.itemInfoJson.itemId
+          );
+        }
+
+        /* JSON 데이터를 이용해 정보 저장 */
         this.itemInfoTable = new ItemInfoTable(this.itemInfoJson);
         setTimeout(() => {
           this.generateBarcode(this.searchId), 0;
@@ -126,6 +135,7 @@ export class SearchResultComponent {
         }
       })
       .then((data) => {
+        console.log(data);
         if (data.itemParts !== null) {
           console.log('재질(part) 업데이트');
           this.itemInfoJson.itemParts = data.itemParts;

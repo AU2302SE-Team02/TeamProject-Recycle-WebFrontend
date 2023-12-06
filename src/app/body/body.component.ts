@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-class AndroidClientApp {
+export class AndroidClientApp {
   public onClickCameraButton(): void {
     console.log('onClickCameraButton()');
   }
@@ -16,8 +16,21 @@ class AndroidClientApp {
   public onClickEmailButton(): void {
     console.log('onClickEmailButton()');
   }
-  public onClickLocationButton(isClicked: boolean): void {
+  public onClickLocationButton(isClicked: boolean): undefined {
     console.log(`onClickLocationButton(${isClicked})`);
+  }
+  public onClickSaveLog(
+    name: string,
+    barcode: string,
+    imageLink: string
+  ): void {
+    console.log('onClickSaveLog()');
+  }
+  public onClickLoadLog(): undefined {
+    console.log('onClickLoadLog()');
+  }
+  public onClickDeleteLog(index: number): void {
+    console.log('onClickDeleteLog()');
   }
 }
 
@@ -43,7 +56,7 @@ export class BodyComponent {
     Validators.maxLength(13),
     Validators.pattern('[0-9]*'),
   ]);
-  public location = '경기도-수원시-영통구-원천동';
+  public location = '서울특별시-관악구-신림동';
 
   /** 생성자
    * @param _router 라우터 (읽기 전용)
@@ -52,14 +65,15 @@ export class BodyComponent {
     //window.AndroidClientApp = new AndroidClientApp(); // 생성 안 하면 undefined 에러가 뜨지만 생성하면 안드로이드에서 인식 못함
     window.setBarcode = (barcode: string): void =>
       this.searchId.setValue(barcode);
-    window.setLocation = (location: string): void => {
-      this.location = location;
-    };
   }
 
   public ngOnInit(): void {
     /** 생성 후 위치 받아옴 */
-    window.AndroidClientApp.onClickLocationButton(false);
+    if (window.AndroidClientApp !== undefined) {
+      this.location = window.AndroidClientApp.onClickLocationButton(
+        false
+      ) as unknown as string;
+    }
   }
 
   /** 검색 버튼을 누를 경우 호출되는 메서드 */
@@ -105,11 +119,11 @@ export class BodyComponent {
 
   public onClickLocationButton(): void {
     // 위치 정보 Intent 요청 API 호출...
-    window.AndroidClientApp.onClickLocationButton(true);
-  }
-
-  public setLocation(location: string) {
-    this.location = location;
+    if (window.AndroidClientApp !== undefined) {
+      this.location = window.AndroidClientApp.onClickLocationButton(
+        true
+      ) as unknown as string;
+    }
   }
 
   public getLocationName(): string {
