@@ -16,7 +16,7 @@ export class HeaderComponent {
     let urlSplits = this._router.routerState.snapshot.url.split('/');
     if (urlSplits[1] === 'search-result') {
       if (urlSplits[4] === '1') {
-        this._router.navigate(['recent-result', urlSplits[2]]);
+        this._router.navigate(['recent-result', decodeURI(urlSplits[2])]);
       } else {
         this._router.navigate(['']);
       }

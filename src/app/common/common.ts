@@ -14,6 +14,8 @@ export class ItemInfoTable {
   public imageLink: string = '';
   /** 부분 정보 */
   public parts: { type: string; description: string }[] = [];
+  /** 순서 */
+  public index: number;
 
   /** 생성자 */
   constructor(table: any) {
@@ -24,6 +26,7 @@ export class ItemInfoTable {
     this.dateCreated = table.itemDateCreated;
     this.dateModified = table.itemDateModified;
     this.imageLink = table.itemImageLink;
+    this.index = 0;
 
     /* 부분 정보 데이터 배열화 */
     const keys = Object.keys(table.itemParts);

@@ -1,10 +1,9 @@
 <div id="common-info-container">
-  <mat-card class="card" *ngFor="let info of commonInfos">
+  <mat-card class="card" *ngFor="let info of commonInfos" dir="auto">
     <mat-card-content>
       <div id="common-info-content">
-        <img src="/assets/book.png" />
-        <p id="common-info-title">분리배출 기본 상식</p>
-        <p id="common-info">{{ info }}</p>
+        <p id="common-info-title">{{ info[0] }}</p>
+        <p id="common-info">{{ info[1] }}</p>
       </div>
     </mat-card-content>
   </mat-card>

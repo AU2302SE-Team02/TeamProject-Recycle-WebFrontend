@@ -58,10 +58,15 @@ export class SearchResultComponent {
     this.getItemFromKN().then(() => {
       this.getItemFromDB().then(() => {
         if (window.AndroidClientApp !== undefined) {
-          window.AndroidClientApp.onClickSaveLog(
+          console.log(
+            this.itemInfoJson.itemId,
             this.itemInfoJson.name,
-            this.itemInfoJson.imageLink,
-            this.itemInfoJson.itemId
+            this.itemInfoJson.itemImageLink
+          );
+          window.AndroidClientApp.onClickSaveLog(
+            this.itemInfoJson.itemId,
+            this.itemInfoJson.itemName,
+            this.itemInfoJson.itemImageLink
           );
         }
 
@@ -115,7 +120,11 @@ export class SearchResultComponent {
         }
         if (data.knItemImageSrc !== null) {
           console.log('이미지주소 업데이트');
-          this.itemInfoJson.itemImageLink = data.knItemImageSrc;
+          if (data.knItemImageSrc.includes('no')) {
+            this.itemInfoJson.itemImageLink = 'assets/no-image-icon.png';
+          } else {
+            this.itemInfoJson.itemImageLink = data.knItemImageSrc;
+          }
         }
       })
       .catch((error) => {
@@ -147,6 +156,15 @@ export class SearchResultComponent {
         if (data.itemDateModified !== null) {
           console.log('최근 검색 날짜 업데이트');
           this.itemInfoJson.itemDateModified = data.guideDateUpdated;
+        }
+        if (data.guideMaterials !== null) {
+          Object.keys(this.itemInfoJson.itemParts).forEach((key) => {
+            if (data.guideMaterials[key]) {
+              this.itemInfoJson.itemParts[
+                key
+              ] += ` ${data.guideMaterials[key]}`;
+            }
+          });
         }
       })
       .catch((error) => {
